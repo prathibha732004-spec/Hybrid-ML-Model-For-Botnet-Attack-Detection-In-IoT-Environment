@@ -6,7 +6,7 @@ This project implements a hybrid machine learning model designed to detect botne
 
 - **BACKEND**: Contains the backend logic and model handling.
 - **FRONTEND**: Contains the user interface and application logic (e.g., `app.py`).
-- **Models**: Includes pre-trained models such as Random Forest for detection.
+- **Models**: Includes pre-trained models such as ANN, CNN, LSTM, RNN, DNN & Random Forest for detection
 
 ## Key Features
 
