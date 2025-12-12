@@ -1,0 +1,228 @@
+{% extends 'index.html' %}
+
+{% block a %}
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                <div class="full">
+                    <div class="center-desk">
+                        <div class="logo">
+                            <a href="index.html" class="text-gradient">BOTNET ATTACKS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <div class="menu-area">
+                    <div class="limit-box">
+                        <nav class="main-menu">
+                            <ul class="menu-area-main">
+                                <li><a href="{{ url_for('viewdata') }}" class="nav-link">View data</a></li>
+                                <li><a href="{{ url_for('algo') }}" class="nav-link">Algorithm</a></li>
+                                <li class="active"><a href="{{ url_for('prediction') }}" class="nav-link">Prediction</a></li>
+                                <li><a href="{{ url_for('index') }}" class="nav-link">Logout</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 heading-text">Prediction</h2>
+    <form method="POST" action="{{ url_for('prediction') }}" class="p-4 shadow-lg rounded bg-light">
+        
+        {% if msg %}
+        <div class="alert alert-info mt-3 custom-msg">
+            {{ msg }}
+        </div>
+        {% endif %}
+        
+        <div class="form-group">
+            <label for="sbytes" class="form-label">Source Bytes:</label>
+            <input type="text" id="sbytes" name="sbytes" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="dbytes" class="form-label">Destination Bytes:</label>
+            <input type="text" id="dbytes" name="dbytes" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="rate" class="form-label">Rate:</label>
+            <input type="text" id="rate" name="rate" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="sload" class="form-label">Source Load:</label>
+            <input type="text" id="sload" name="sload" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="dload" class="form-label">Destination Load:</label>
+            <input type="text" id="dload" name="dload" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="sinpkt" class="form-label">Source In-Packet:</label>
+            <input type="text" id="sinpkt" name="sinpkt" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="sjit" class="form-label">Source Jitter:</label>
+            <input type="text" id="sjit" name="sjit" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="stcpb" class="form-label">Source TCP B:</label>
+            <input type="text" id="stcpb" name="stcpb" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="dtcpb" class="form-label">Destination TCP B:</label>
+            <input type="text" id="dtcpb" name="dtcpb" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="response_body_len" class="form-label">Response Body Length:</label>
+            <input type="text" id="response_body_len" name="response_body_len" class="form-control form-control-lg custom-input" required>
+        </div>
+        
+        <center><button type="submit" class="btn btn-primary btn-lg mt-4 custom-btn">Submit</button></center>
+    </form>
+</div>
+{% endblock %}
+
+<style>
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Navigation Styling */
+.menu-area-main {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-area-main li {
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.active .nav-link {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+/* Header Styling */
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #0056b3;
+}
+
+.text-gradient {
+    background: -webkit-linear-gradient(45deg, #007bff, #28a745);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.custom-input {
+    border: 2px solid #007bff;
+    padding: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.1);
+}
+
+.custom-input:focus {
+    border-color: #0056b3;
+    box-shadow: 0px 4px 10px rgba(0, 86, 179, 0.3);
+    outline: none;
+}
+
+.custom-input:hover {
+    border-color: #0056b3;
+    background-color: #f0f8ff;
+}
+
+/* Form Heading */
+.heading-text {
+    color: #007bff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+/* Button Styling */
+.custom-btn {
+    background-color: #007bff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Custom Alert Message */
+.custom-msg {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-left: 5px solid #0c5460;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.2);
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-area-main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-area-main li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .heading-text {
+        font-size: 22px;
+    }
+}
+</style>

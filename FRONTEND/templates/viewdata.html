@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+
+{% block a %}
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                <div class="full">
+                    <div class="center-desk">
+                        <div class="logo"> <a href="index.html">BOTNET ATTACKS</a> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <div class="menu-area">
+                    <div class="limit-box">
+                        <nav class="main-menu">
+                            <ul class="menu-area-main">
+                                <li class="active"> <a href="{{ url_for('viewdata') }}">View data</a> </li>
+                                <li><a href="{{ url_for('algo') }}">Algorithm</a> </li>
+                                <li><a href="{{ url_for('prediction') }}">Prediction</a> </li>
+                                <li><a href="{{ url_for('index') }}">Logout</a> </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header inner -->
+</div>
+{% endblock %}
+
+{% block content %}
+
+    <style>
+        /* Custom styling for the table */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td, th {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        tr:hover {background-color: #f1f1f1;}
+        
+        /* Set max height and add scrollbars */
+        .table-responsive {
+            max-height: 400px; /* Vertical scroll */
+            overflow-y: auto;
+            overflow-x: auto; /* Horizontal scroll */
+            white-space: nowrap; /* Ensure the table doesn't wrap */
+        }
+    </style>
+
+    <div class="container">
+        <h2 class="my-4 text-center">Dataset overview</h2>
+        <div class="table-responsive">
+            {{ table|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

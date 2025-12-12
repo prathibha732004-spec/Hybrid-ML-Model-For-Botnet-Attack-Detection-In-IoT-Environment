@@ -1,0 +1,112 @@
+{% extends 'index.html' %}
+
+{% block a %}
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                <div class="full">
+                    <div class="center-desk">
+                        <div class="logo">
+                            <a href="index.html">BOTNET ATTACKS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                <div class="menu-area">
+                    <div class="limit-box">
+                        <nav class="main-menu">
+                            <ul class="menu-area-main">
+                                <li><a href="{{ url_for('viewdata') }}">View Data</a></li>
+                                <li><a href="{{ url_for('algo') }}">Algorithm</a></li>
+                                <li><a href="{{ url_for('prediction') }}">Prediction</a></li>
+                                <li><a href="{{ url_for('index') }}">Logout</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header inner -->
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Select Algorithm to View Accuracy</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{{ url_for('algo') }}">
+                        <div class="form-group">
+                            <!-- Custom styling for the select box -->
+                            <div class="text-center">
+                                <div class="custom-select-wrapper">
+                                    <select id="model" name="model" class="custom-select">
+                                        <option value="ANN">Artificial Neural Network (ANN)</option>
+                                        <option value="CNN">Convolutional Neural Network (CNN)</option>
+                                        <option value="RNN">Recurrent Neural Network (RNN)</option>
+                                        <option value="LSTM">Long Short-Term Memory (LSTM)</option>
+                                        <option value="RandomForest">Random Forest</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Get Accuracy</button>
+                    </form>
+                </div>
+                {% if accuracy is not none %}
+                <div class="card-footer text-center">
+                    <h4 class="mb-2">{{ model_name }} Accuracy:</h4>
+                    <p class="lead">{{ accuracy }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+.custom-select-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.custom-select {
+    background: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: #495057;
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    line-height: 1.5;
+}
+
+.custom-select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(38, 143, 255, .25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+</style>
+{% endblock %}
