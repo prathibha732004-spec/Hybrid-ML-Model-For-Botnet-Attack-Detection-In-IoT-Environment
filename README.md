@@ -19,6 +19,4 @@ This project implements a hybrid machine learning model designed to detect botne
 1. Navigate to the `FRONTEND` or `BACKEND` directory to experiment with the components.
 2. Review the `app.py` in `FRONTEND` for the main application entry point.
 
-## License
 
-[Add License Information Here]
