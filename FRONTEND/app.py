@@ -98,7 +98,7 @@ def login():
 @app.route('/viewdata')
 def viewdata():
     # Load the dataset
-    df = pd.read_csv('UNSW_NB15.csv')
+    df = pd.read_csv('UNSW_NB15.csv',nrows=200)
     df = df.head(1000)
 
     table_html = df.to_html(classes='table table-striped table-hover', index=False)
