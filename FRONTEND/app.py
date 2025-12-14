@@ -110,7 +110,7 @@ ann_model = tf.keras.models.load_model('saved models/ann_model.h5')
 cnn_model = tf.keras.models.load_model('saved models/cnn_model.h5')
 rnn_model = tf.keras.models.load_model('saved models/rnn_model.h5')
 lstm_model = tf.keras.models.load_model('saved models/lstm_model.h5')
-rf_model = joblib.load('saved models/random_forest_model.pkl')
+# rf_model = joblib.load('saved models/random_forest_model.pkl')
 
 # Load the dataset
 data = pd.read_csv('UNSW_NB15.csv')
