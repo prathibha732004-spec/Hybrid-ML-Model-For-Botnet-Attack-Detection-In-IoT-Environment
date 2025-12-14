@@ -9,13 +9,20 @@ from sklearn.feature_selection import SelectKBest, chi2
 import numpy as np
 
 import os
-import mysql.connector
+
 mydb = mysql.connector.connect(
     host=os.environ.get("DB_HOST"),
+<<<<<<< HEAD
     port=int(os.environ.get("DB_PORT")),
     user=os.environ.get("DB_USER"),
     password=os.environ.get("DB_PASSWORD"),
     database=os.environ.get("DB_NAME")
+=======
+    user=os.environ.get("DB_USER"),
+    password=os.environ.get("DB_PASSWORD"),
+    database=os.environ.get("DB_NAME"),
+    port=int(os.environ.get("DB_PORT"))
+>>>>>>> 7d36333 (Use env vars for DB connection)
 )
 
 
