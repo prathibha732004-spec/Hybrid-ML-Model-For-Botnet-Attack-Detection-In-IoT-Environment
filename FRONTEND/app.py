@@ -147,8 +147,8 @@ def evaluate_model(model_name):
         model = rnn_model
     elif model_name == 'LSTM':
         model = lstm_model
-    elif model_name == 'RandomForest':
-        model = rf_model
+    # elif model_name == 'RandomForest':
+        # model = rf_model
     else:
         return "Invalid model name"
 
@@ -208,8 +208,9 @@ def prediction():
             input_data = np.array([input_data])
             
             # Make prediction
-            predicted_attack_idx = rf_model.predict(input_data)[0]
-            predicted_attack_category = attack_cat_mapping[predicted_attack_idx]
+            # predicted_attack_idx = rf_model.predict(input_data)[0]
+            # predicted_attack_category = attack_cat_mapping[predicted_attack_idx]
+            predicted_attack_category = "Prediction disabled in cloud deployment"
             print(predicted_attack_category)
             return render_template('prediction.html', msg=f'Predicted Attack Category: {predicted_attack_category}')
         except Exception as e:
