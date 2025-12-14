@@ -170,7 +170,7 @@ def algo():
 
 
 # Load the saved model
-rf_model = joblib.load('saved models/random_forest_model.pkl')
+# rf_model = joblib.load('saved models/random_forest_model.pkl')
 
 # Dictionary mapping encoded values to attack categories
 attack_cat_mapping = {
