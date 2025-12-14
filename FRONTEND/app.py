@@ -8,15 +8,17 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_selection import SelectKBest, chi2
 import numpy as np
 
-
+import os
 import mysql.connector
 mydb = mysql.connector.connect(
-    host='localhost',
-    port=3307,          
-    user='root',        
-    passwd='@8050045820',          
-    database='botnetattack'  
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME"),
+    port=int(os.getenv("DB_PORT"))
 )
+
+
 
 mycur = mydb.cursor()
 
