@@ -7,22 +7,21 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_selection import SelectKBest, chi2
 import numpy as np
-
+import mysql.connector
 import os
 
 mydb = mysql.connector.connect(
     host=os.environ.get("DB_HOST"),
-<<<<<<< HEAD
+
     port=int(os.environ.get("DB_PORT")),
     user=os.environ.get("DB_USER"),
-    password=os.environ.get("DB_PASSWORD"),
-    database=os.environ.get("DB_NAME")
-=======
-    user=os.environ.get("DB_USER"),
-    password=os.environ.get("DB_PASSWORD"),
+   
     database=os.environ.get("DB_NAME"),
-    port=int(os.environ.get("DB_PORT"))
->>>>>>> 7d36333 (Use env vars for DB connection)
+   
+    password=os.environ.get("DB_PASSWORD"),
+    
+   
+
 )
 
 
@@ -218,5 +217,6 @@ def prediction():
     return render_template('prediction.html')
 
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
